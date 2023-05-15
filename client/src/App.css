@@ -1,3 +1,10 @@
+body {
+  background-image: url(https://e1.pxfuel.com/desktop-wallpaper/106/642/desktop-wallpaper-world-map-ultra-best-world-map-ultra-world-map-black.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .App {
   text-align: center;
 }

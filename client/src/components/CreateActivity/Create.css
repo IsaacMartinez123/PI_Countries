@@ -1,0 +1,14 @@
+/* .alert {
+    display: none;
+    padding: 10px;
+    background-color: green;
+    color: white;
+}
+
+.alert.show {
+    display: block;
+} */
+
+.msg-error{
+    color: red;
+}

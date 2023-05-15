@@ -1,11 +1,12 @@
 const { Country, Activity } = require('../db.js')
 const axios = require('axios')
+const URL = 'https://restcountries.com/v3/all'
 
 const getDataByApi = async () => {
 
     try {
-        const url = await axios('https://restcountries.com/v3/all')
-        const contriesApiInfo = await url.data.map((country) => {
+        const { data } = await axios(URL)
+        const contriesApiInfo = await data.map((country) => {
             return {
                 id: country.cca3,
                 name: country.name.common,
