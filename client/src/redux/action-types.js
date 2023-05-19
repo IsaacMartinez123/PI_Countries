@@ -7,3 +7,4 @@ export const ADD_ACTIVITY = "ADD_ACTIVITY";
 export const RESET_DETAIL = "RESET_DETAIL";
 export const GET_ACTIVITY = "GET_ACTIVITY";
 export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
+export const GET_COUNTRY = "GET_COUNTRY";

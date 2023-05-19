@@ -1,7 +1,7 @@
-import { ADD_COUNTRY, FIND_COUNTRY, ORDER_COUNTRY, ORDER_POPULATION, FILTER_CONTINENT, ADD_ACTIVITY, RESET_DETAIL, GET_ACTIVITY, FILTER_ACTIVITY } from "./action-types";
+import { ADD_COUNTRY, FIND_COUNTRY, ORDER_COUNTRY, ORDER_POPULATION, FILTER_CONTINENT, ADD_ACTIVITY, RESET_DETAIL, GET_ACTIVITY, FILTER_ACTIVITY, GET_COUNTRY } from "./action-types";
 import axios from 'axios';
 
-export const getCountry = (name) => {
+export const addCountry = (name) => {
     const endpoint = 'http://localhost:3001/countries';
 
     return async (dispatch) => {
@@ -14,6 +14,27 @@ export const getCountry = (name) => {
 
             return dispatch({
                 type: ADD_COUNTRY,
+                payload: data,
+            });
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+};
+
+export const getCountry = () => {
+    const endpoint = 'http://localhost:3001/countries';
+
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`${endpoint}`);
+
+            if (!data.length) {
+                throw new Error(`No countries found`);
+            }
+
+            return dispatch({
+                type: GET_COUNTRY,
                 payload: data,
             });
         } catch (error) {

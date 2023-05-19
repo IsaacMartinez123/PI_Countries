@@ -1,0 +1,33 @@
+.ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 7px;
+    background-color: #8d8aa6d7
+}
+
+.li {
+    margin: 1rem;
+}
+
+.container {
+    margin: 0.6rem;
+    margin-top: 0.5rem;
+    color: white;
+    text-decoration: none;
+    background-color: #97A699;
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    background-color: #A69797;
+    transform: scale(1.1);
+}
+
+.current {
+    background-color: #8D8AA6;
+    transform: scale(1.1);
+}

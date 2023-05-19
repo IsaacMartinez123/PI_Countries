@@ -1,22 +1,25 @@
-import { ADD_COUNTRY, FIND_COUNTRY, ORDER_COUNTRY, ORDER_POPULATION, FILTER_CONTINENT, ADD_ACTIVITY, RESET_DETAIL, GET_ACTIVITY, FILTER_ACTIVITY } from "./action-types";
+import { ADD_COUNTRY, FIND_COUNTRY, ORDER_COUNTRY, ORDER_POPULATION, FILTER_CONTINENT, ADD_ACTIVITY, RESET_DETAIL, GET_ACTIVITY, FILTER_ACTIVITY, GET_COUNTRY } from "./action-types";
 
 const initialState = {
     countries: [],
-    countryDetail: [],
     allCountries: [],
+    countryDetail: [],
     activities: []
 };
 
-
-
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case ADD_COUNTRY:
-            
+        case GET_COUNTRY:
             return {
                 ...state,
-                countries: [...state.countries, ...payload],
-                allCountries: [...state.allCountries, ...payload]
+                countries: payload,
+                allCountries: payload
+            };
+
+        case ADD_COUNTRY:
+            return {
+                ...state,
+                countries: payload,
             };
 
         case FIND_COUNTRY:
@@ -33,11 +36,14 @@ const reducer = (state = initialState, { type, payload }) => {
 
         case ORDER_COUNTRY:
             const countriesCopy = [...state.countries]
+            if (payload === 'A') {
+                countriesCopy.sort((a, b) => a.name.localeCompare(b.name))
+            }else if(payload === 'D'){
+                countriesCopy.sort((a, b) => b.name.localeCompare(a.name))
+            }
             return{
                 ...state,
-                countries: payload === 'A'
-                ? countriesCopy.sort((a, b) => a.name.localeCompare(b.name))
-                : countriesCopy.sort((a, b) => b.name.localeCompare(a.name))
+                countries: countriesCopy
             }
         
         case ORDER_POPULATION:
@@ -61,7 +67,6 @@ const reducer = (state = initialState, { type, payload }) => {
         case ADD_ACTIVITY:
             return{
                 ...state,
-                // activities: [...state.activities, payload]
             }
 
         case GET_ACTIVITY:
@@ -71,14 +76,17 @@ const reducer = (state = initialState, { type, payload }) => {
             }
 
         case FILTER_ACTIVITY:
-            const filterActivity = state.allCountries.filter(activity => activity.activities.id === payload )
+            console.log(state.countries[0].activities);
+            const filterActivity = state.allCountries.filter((country) => {
+                return country.activities.some((activity) => activity.name === payload);
+            });
 
             return{
                 ...state,
                 countries: payload === 'AllActivities'
                 ? [...state.allCountries]
                 : filterActivity
-        }
+            }
 
         default:
         return state;

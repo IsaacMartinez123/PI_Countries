@@ -1,15 +1,32 @@
 import SearchBar from './SearchBar';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCountry } from '../../redux/actions';
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+
+    const getAllCountries = (event) => {
+        event.preventDefault();
+        dispatch(getCountry());
+    };
+
     return (
-        <nav>
-            <ul>
-                <li>
-                    <SearchBar />
-                </li>
-            </ul>
+        <nav className='nav-container'>
+        <div className='nav-left'>
+            <SearchBar />
+        </div>
+        <div className='nav-buttons'>
+            <NavLink to={'/create'}>
+            <button className='btn-create'>Create Activity</button>
+            </NavLink>
+            <NavLink to={'/home'}>
+            <button className='btn-home'>Home</button>
+            </NavLink>
+            <button className='btn-reset' onClick={getAllCountries}>Reset</button>
+        </div>
         </nav>
     );
-};
+    };
 
 export default Navbar;
