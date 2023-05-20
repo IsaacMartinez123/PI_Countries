@@ -1,11 +1,6 @@
 const validate = (form) => {
-    // name
-    // difficulty
-    // duration
-    // season
-    // countryId
-    let errors = {};
 
+    let errors = {};
 
     if (!form.name) { //Valida stado de los campos
         errors.name = "The name cannot be empty";
@@ -19,16 +14,16 @@ const validate = (form) => {
         errors.name = "The name must have a maximum of 35 characters"
     }
 
-    if (!form.difficulty) { //Valida stado de los campos
-        errors.difficulty = "The difficulty cannot be empty";
-    }
+    // if (form.difficulty.length) { //Valida stado de los campos
+    //     errors.difficulty = "The difficulty cannot be empty";
+    // }
 
     if (form.difficulty > 5 ) { //Valida stado de los campos
-        errors.duration = "Difficulty cannot be higher than 5";
+        errors.difficulty = "Difficulty cannot be higher than 5";
     }
     
     if (form.difficulty < 1 ) { //Valida stado de los campos
-        errors.duration = "Difficulty cannot be less than 1";
+        errors.difficulty = "Difficulty cannot be less than 1";
     }
 
     if (!form.duration) { //Valida stado de los campos
@@ -39,8 +34,10 @@ const validate = (form) => {
         errors.season = "The season cannot be empty";
     }
 
-    if (form.countryId.length === 0) { //Valida stado de los campos
-        errors.countryId = "The country cannot be empty";
+    if (form.countryId.length > 0) { //Valida stado de los campos
+        errors.countryId = "";
+    }else{
+        errors.countryId = "The country cannot be empty"
     }
 
     return errors; //Cambia stado de los errores al terminar todas las validaciones

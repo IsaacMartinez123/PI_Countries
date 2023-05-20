@@ -9,15 +9,15 @@ const Home = () => {
 
     const dispatch = useDispatch()
 
+    const activities = useSelector(state => state.activities);
     const countries = useSelector(state => state.countries);
-    const [activities] = useSelector(state => state.activities);
     const [aux, setAux] = useState(false)
     //paginado
     const [currentPage, setCurrentPage] = useState(1)
     const [countriesPerPage] = useState(10)
-    const indexOfLastRecipe = currentPage * countriesPerPage;
-    const indexOfFirstRecipe = indexOfLastRecipe - countriesPerPage;
-    const currentCountries = countries.slice(indexOfFirstRecipe, indexOfLastRecipe);
+    const lastCountry = currentPage * countriesPerPage;
+    const firstCountry = lastCountry - countriesPerPage;
+    const currentCountries = countries.slice(firstCountry, lastCountry);
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -30,10 +30,10 @@ const Home = () => {
         rows.push(row);
     }
 
-    // useEffect(() => {
-    //     dispatch(getCountry())
-    //     dispatch(getActivities());
-    // }, [dispatch]);
+    useEffect(() => {
+        dispatch(getCountry())
+        dispatch(getActivities());
+    }, [dispatch]);
 
 
     const handleOrder = (event) =>{
@@ -68,8 +68,8 @@ const Home = () => {
         <div className='selec-container'>
             <select onChange={handleOrder}>
                 <option >Order By Name</option>
-                <option value="A">A-Z</option>
-                <option value="D">Z-A</option>
+                <option value="A">A - Z</option>
+                <option value="D">Z - A</option>
             </select>
             <select onChange={handleOrderPopulation}>
                 <option >Order By Population</option>
@@ -77,7 +77,7 @@ const Home = () => {
                 <option value="MJ">Minor to Major</option>
             </select>
             <select onChange={handleOrContinent}>
-                <option >Order By Continent</option>
+                <option value="order">Order By Continent</option>
                 <option value="Asia">Asia</option>
                 <option value="Africa">Africa</option>
                 <option value="Americas">Americas</option>
@@ -86,16 +86,16 @@ const Home = () => {
                 <option value="Oceania">Oceania</option>
                 <option value="AllCountries">All Countries</option>
             </select>
-            <select name='activity' onChange={handleOrActivity}>
-                <option >Order By Activities</option>
-                <option value="AllActivities">All Activities</option>
+
+            <select onChange={(event) => handleOrActivity(event)}>
+                <option value="order">Order By Activities</option>
+                <option value="AllActivities">All Countries</option>
                 {
                     activities?.map((activity) => (
-                        <option value={activity.name}>{activity.name}</option>
+                        <option value={activity?.name}>{activity?.name}</option>
                     ))
                 }
             </select>
-
         </div>
                 
         <div className="paginado">
@@ -144,7 +144,7 @@ const Home = () => {
             </div>
         ))}
         
-        <div className="paginado">
+        {/* <div className="paginado">
             <Paginado
                 key="paginado"
                 countriesPerPage={countriesPerPage}
@@ -152,7 +152,7 @@ const Home = () => {
                 paginado={paginado}
                 currentPage={currentPage}
             />
-        </div>
+        </div> */}
         </>
         )
 }

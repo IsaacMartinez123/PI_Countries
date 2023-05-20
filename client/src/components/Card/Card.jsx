@@ -12,20 +12,21 @@ const Card = (props) => {
         //     </NavLink>
         // </div>
         <div class="card-container">
+        <NavLink className="link" to={`/detail/${props.id}`}>
             <div class="deck">
                 <div class="card">
                     <div class="face">
                         <div className="img">
                             <img src={props.flag} alt="" />        
                         </div>
-                        <NavLink className="link" to={`/detail/${props.id}`}>
-                            <h1>name: <span>{props.name}</span></h1>
-                            <h1>continent: <span>{props.continent}</span></h1>
-                            <h1>population: <span>{props.population} inhabitants</span></h1>
-                        </NavLink>
+                        
+                        <h1>name: <span>{props.name}</span></h1>
+                        <h1>continent: <span>{props.continent}</span></h1>
+                        <h1>population: <span>{props.population} inhabitants</span></h1>
                     </div>
                 </div>
             </div>
+        </NavLink>
         </div>
     )
 }

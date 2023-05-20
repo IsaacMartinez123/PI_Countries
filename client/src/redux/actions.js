@@ -3,11 +3,10 @@ import axios from 'axios';
 
 export const addCountry = (name) => {
     const endpoint = 'http://localhost:3001/countries';
-
+    
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`${endpoint}?name=${name}`);
-
             if (!data.length) {
                 throw new Error(`No countries found with this name: ${name}`);
             }

@@ -19,7 +19,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case ADD_COUNTRY:
             return {
                 ...state,
-                countries: payload,
+                countries: payload
             };
 
         case FIND_COUNTRY:
@@ -48,42 +48,44 @@ const reducer = (state = initialState, { type, payload }) => {
         
         case ORDER_POPULATION:
             const countriesCopyByPopulation = [...state.countries]
+            if (payload === 'MJ') {
+                countriesCopyByPopulation.sort((a, b) => a.population - b.population)
+            }else if(payload === 'MR'){
+                countriesCopyByPopulation.sort((a, b) => b.population - a.population)
+            }
             return{
                 ...state,
-                countries: payload === 'MJ'
-                ? countriesCopyByPopulation.sort((a, b) => a.population - b.population)
-                : countriesCopyByPopulation.sort((a, b) => b.population - a.population)
+                countries: countriesCopyByPopulation
             }
 
         case FILTER_CONTINENT:
             const filterContinent = state.allCountries.filter(country => country.continent === payload )
             return{
                 ...state,
-                countries: payload === 'AllCountries'
+                countries: payload === 'AllCountries' || payload === 'order'
                 ? [...state.allCountries]
                 : filterContinent
             }
 
         case ADD_ACTIVITY:
             return{
-                ...state,
+                ...state
             }
 
         case GET_ACTIVITY:
             return{
                 ...state,
-                activities: [...state.activities, payload]
+                activities: payload
             }
 
         case FILTER_ACTIVITY:
-            console.log(state.countries[0].activities);
             const filterActivity = state.allCountries.filter((country) => {
                 return country.activities.some((activity) => activity.name === payload);
             });
 
             return{
                 ...state,
-                countries: payload === 'AllActivities'
+                countries: payload === 'AllActivities' || payload === 'order'
                 ? [...state.allCountries]
                 : filterActivity
             }
