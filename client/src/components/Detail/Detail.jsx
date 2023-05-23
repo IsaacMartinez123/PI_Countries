@@ -2,48 +2,66 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 import { findCountryById, resetDetail } from "../../redux/actions";
-import './Detal.css'
+import "./Detail.css";
 
 const Detail = () => {
-
-    const {id} = useParams()
-    const dispatch = useDispatch()
-    const countryDetail = useSelector((state) => state.countryDetail[0])
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const countryDetail = useSelector((state) => state.countryDetail[0]);
 
     useEffect(() => {
-        dispatch(resetDetail())
+        dispatch(resetDetail());
         dispatch(findCountryById(id));
     }, [dispatch, id]);
 
-    return(
-        <div>
-            {countryDetail ?
-            <div>
-                <NavLink to={`/home`}>
-                    <button>x</button>
+    return (
+        <div className="detail">
+        {countryDetail ? (
+            <div className="card-detail">
+                <img className="card-image" src={countryDetail.flag} alt="" />
+                <div className="card-content">
+                    <h2 className="card-subtitle">
+                    ID: {countryDetail.id} | Name: {countryDetail.name} | Continent:{" "}
+                    {countryDetail.continent}
+                    </h2>
+                    <h2 className="card-subtitle">
+                    Capital: {countryDetail.capital} | Subregion:{" "}
+                    {countryDetail.subregion}
+                    </h2>
+                    <h2 className="card-subtitle">
+                    Area: {countryDetail.area} | Population: {countryDetail.population}
+                    </h2>
+
+                    {countryDetail.activities.length > 0 ? (
+                    <>
+                        <h2 className="activity-heading">Activity/ies:</h2>
+                        {countryDetail.activities.map((activity) => (
+                        <div className="activity-details" key={activity.name}>
+                            <h2 className="subtitle-activity">
+                            Name: {activity.name} | Difficulty: {activity.difficulty}
+                            </h2>
+                            <h2 className="subtitle-activity">
+                            Duration: {activity.duration} | Season: {activity.season}
+                            </h2>
+                        </div>
+                        ))}
+                    </>
+                    ) : (
+                    <h2 className="activityEmpty">No activities available</h2>
+                    )}
+                </div>
+                <NavLink to={`/home`} className="button-container">
+                    <button className="button-detail">Go Back</button>
                 </NavLink>
-                <h1>id: {countryDetail.id}</h1>
-                <h1>name: {countryDetail.name}</h1>
-                <h1>continent: {countryDetail.continent}</h1>
-                <h1>capital: {countryDetail.capital}</h1>
-                <h1>subregion: {countryDetail.subregion}</h1>
-                <h1>area: {countryDetail.area}</h1>
-                <h1>population: {countryDetail.population} inhabitants</h1>
-                <img className="img" src={countryDetail.flag} alt="" />
-                {countryDetail.activities?.map(activity => (
-                    <div key={activity.name}>
-                        <h2>activity: {activity.name}</h2>
-                        <h2>difficulty: {activity.difficulty}</h2>
-                        <h2>duration: {activity.duration}</h2>
-                        <h2>season: {activity.season}</h2>
-                    </div>
-                ))}
             </div>
-            : <div>
+        ) : (
+            <div className="loading-content">
                 <h1>Loading...</h1>
-            </div>}
+                <img src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif" alt="" />
+            </div>
+        )}
         </div>
-    )
-}
+    );
+};
 
 export default Detail;

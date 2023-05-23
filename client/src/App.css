@@ -1,10 +1,12 @@
 body {
-  background-image: url(https://e1.pxfuel.com/desktop-wallpaper/106/642/desktop-wallpaper-world-map-ultra-best-world-map-ultra-world-map-black.jpg);
+  background-image: url("https://images.unsplash.com/photo-1529154631088-a0e516571c60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
-
+*{
+  font-family: 'Alkatra', cursive;
+}
 .App {
   text-align: center;
 }

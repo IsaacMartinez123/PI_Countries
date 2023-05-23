@@ -1,6 +1,6 @@
 const { Country, Activity } = require('../db.js')
 const axios = require('axios')
-const URL = 'https://restcountries.com/v3/all'
+const URL = 'https://rest-countries.up.railway.app/v3/all'
 
 const getDataByApi = async () => {
 
@@ -10,7 +10,7 @@ const getDataByApi = async () => {
             return {
                 id: country.cca3,
                 name: country.name.common,
-                flag: country.flags[0],
+                flag: country.flags[1],
                 continent: country.region,
                 capital: country.capital,
                 subregion: country.subregion,

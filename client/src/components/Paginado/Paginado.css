@@ -4,7 +4,7 @@
     justify-content: center;
     margin: 0 auto;
     padding: 7px;
-    background-color: #8d8aa6d7
+    background-color: #591E34
 }
 
 .li {
@@ -14,20 +14,20 @@
 .container {
     margin: 0.6rem;
     margin-top: 0.5rem;
-    color: white;
+    color: #193140;
     text-decoration: none;
-    background-color: #97A699;
+    background-color: #f2e0dce7;
     border-radius: 10px;
     padding: 5px 10px;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .container:hover {
-    background-color: #A69797;
+    background-color: #da5989e3;
     transform: scale(1.1);
 }
 
 .current {
-    background-color: #8D8AA6;
+    background-color: #F27999;
     transform: scale(1.1);
 }

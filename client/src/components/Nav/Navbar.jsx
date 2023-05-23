@@ -17,11 +17,11 @@ const Navbar = () => {
             <SearchBar />
         </div>
         <div className='nav-buttons'>
-            <NavLink to={'/create'}>
-            <button className='btn-create'>Create Activity</button>
-            </NavLink>
             <NavLink to={'/home'}>
             <button className='btn-home'>Home</button>
+            </NavLink>
+            <NavLink to={'/create'}>
+            <button className='btn-create'>Create Activity</button>
             </NavLink>
             <button className='btn-reset' onClick={getAllCountries}>Reset</button>
         </div>

@@ -1,0 +1,116 @@
+.detail {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.card-detail {
+    background-color: #dacfcdea;
+    width: 650px;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+
+.card-image {
+    width: 79%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.card-content {
+    /* padding: 10px; */
+    margin-top: 15px;
+}
+
+.card-subtitle {
+    font-size: 0.875rem;
+    color: #26262b;
+    padding: 13px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 17px;
+    border-radius: 10px;
+    background-color: #D96E48;
+}
+
+.subtitle-activity {
+    font-size: 0.875rem;
+    color: #26262b;
+    padding: 13px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 17px;
+    border-radius: 10px;
+    background-color: #04ADBF;
+}
+
+.activityEmpty {
+    font-size: 0.99rem;
+    padding: 13px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    background-color: #d90404;
+}
+
+.activity-heading {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    margin-left: -15px;
+    background-color: #b9b1afea;
+    padding: 5px;
+    color: #46464b;
+    width: 103.2%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 17px;
+    color: black;
+    text-decoration: none;
+}
+
+.button-detail {
+    background-color: #195947;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    width: 80%;
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #F2E0DC;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.button-detail:hover {
+    background-color: #02733E;
+}
+
+.loading-content {
+    background-color: #dacfcdea;
+    border-radius: 10px;
+    padding: 5px;
+    width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.loading-content h1 {
+    margin-bottom: -10px;
+}
+
+.loading-content img {
+    width: 600px;
+    height: 230px;
+}
+
+
