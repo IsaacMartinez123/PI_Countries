@@ -5,7 +5,7 @@ const LandingPage = () => {
     return (
         <div className="landing-container">
         <div className="card-landing">
-            <h1 className="title">Discover the countries of the world</h1>
+            <h1 className="title">Welcome. We discover the countries of the world</h1>
             <img src="https://i0.wp.com/www.puntogeek.com/wp-content/uploads/2013/09/BreathingEarth.gif?w=600" alt="" />
             {/* <p className="subtitle">Find your next adventure</p> */}
             <NavLink to="/home">

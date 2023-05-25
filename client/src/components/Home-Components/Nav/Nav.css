@@ -38,33 +38,50 @@
   background-color: #F2E0DC;
 }
 
-.btn-agregar{
-  background-color: #09864cbe;
-  height: 38px;
-  border-radius: 8px;
-  margin-left: 10px;
+.btn-input:hover{
+  background-color: #e3c3bb;
 }
+
 .btn-home{
-  background-color: #04acbfbe;
+  background-color: #cb6e90;
+  border-color: #b18897;
+  font-weight: bolder;
+  font-size: 14.5px;
   height: 38px;
   border-radius: 8px;
   margin-left: 10px;
   margin-top: -1px;
 }
 .btn-create{
-  background-color: #F27999be;
+  background-color: #cb6e90;
+  border-color: #b18897;
   height: 38px;
   border-radius: 8px;
   margin-left: 10px;
+  font-weight: bolder;
+  font-size: 14.5px;
 }
 .btn-reset {
-  background-color: #f2e0dcbe;
+  background-color: #cb6e90;
+  border-color: #b18897;
   height: 38px;
   border-radius: 8px;
   margin-left: 10px;
   margin-top: -1px;
+  font-weight: bolder;
+  font-size: 14.5px;
 }
 
 .btn-agregar svg {
   fill: #000000;
 }
+
+.btn-agregar:hover,
+.btn-create:hover,
+.btn-home:hover,
+.btn-reset:hover {
+  background-color: #b6587b;
+  border-color: #cb6e90;
+  cursor: pointer;
+}
+

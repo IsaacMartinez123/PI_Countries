@@ -1,34 +1,22 @@
 import './Home.css'
 import { useSelector, useDispatch } from 'react-redux';
-import { getCountry, orderCountry, orderPopulation, filterContinent, getActivities, filterActivity } from '../../redux/actions';
+import { getCountry, orderCountry, orderPopulation, filterContinent, getActivities, filterActivity } from '../../../redux/actions';
 import { useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
 
-const Home = () => {
+const Home = ({ paginado, currentPage, countriesPerPage, rows, setCurrentPage }) => {
 
     const dispatch = useDispatch()
 
     const activities = useSelector(state => state.activities);
     const countries = useSelector(state => state.countries);
     const [aux, setAux] = useState(false)
-    //paginado
-    const [currentPage, setCurrentPage] = useState(1)
-    const [countriesPerPage] = useState(10)
-    const lastCountry = currentPage * countriesPerPage;
-    const firstCountry = lastCountry - countriesPerPage;
-    const currentCountries = countries.slice(firstCountry, lastCountry);
+    const [continentSelected, setContinentSelected] = useState(false)
+    const [activitySelected, setActivitySelected] = useState(false)
+    const [orderSelected, setOrderSelected] = useState(false)
+    const [populationSelected, setPopulationSelected] = useState(false)
 
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
-    // Crear filas con 3 elementos en cada una
-    const rows = [];
-    for (let i = 0; i < currentCountries.length; i += 3) {
-        const row = currentCountries.slice(i, i + 3);
-        rows.push(row);
-    }
 
     useEffect(() => {
         dispatch(getCountry())
@@ -36,48 +24,65 @@ const Home = () => {
     }, [dispatch]);
 
 
-    const handleOrder = (event) =>{
-        if (!aux) {
-            dispatch(orderCountry(event.target.value))
-            setAux(true)
+    const handleOrder = (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue !== '') {
+            setOrderSelected(true);
         } else {
-            dispatch(orderCountry(event.target.value))
-            setAux(false)
+            setOrderSelected(false);
         }
-    }
+        dispatch(orderCountry(selectedValue));
+        setCurrentPage(1);
+    };
 
-    const handleOrderPopulation = (event) =>{
-        if (!aux) {
-            dispatch(orderPopulation(event.target.value))
-            setAux(true)
+    // const handleOrderPopulation = (event) =>{
+    //     const selectedValue = event.target.value;
+    //     if (selectedValue !== '') {
+    //     setPopulationSelected(true);
+    //     } else {
+    //     setPopulationSelected(false);
+    //     }
+    //     dispatch(orderCountry(event.target.value))
+    // }
+
+    const handleOrContinent = (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue !== '') {
+            setContinentSelected(true);
         } else {
-            dispatch(orderPopulation(event.target.value))
-            setAux(false)
+            setContinentSelected(false);
         }
-    }
-    const handleOrContinent = (event) =>{
-        dispatch(filterContinent(event.target.value))
-    }
+        dispatch(filterContinent(selectedValue));
+        setCurrentPage(1);
+    };
 
-    const handleOrActivity = (event) =>{
-        dispatch(filterActivity(event.target.value))
-    }
+    const handleOrActivity = (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue !== '') {
+            setActivitySelected(true);
+        } else {
+            setActivitySelected(false);
+        }
+        dispatch(filterActivity(selectedValue));
+        setCurrentPage(1);
+    };
+
     //Asia, Africa, North America, South America, Antarctica, Europe, and Australia
     return (
         <>
         <div className='selec-container'>
             <select onChange={handleOrder}>
-                <option >Order By Name</option>
+                <option disabled={orderSelected}>Order By Name</option>
                 <option value="A">A - Z</option>
                 <option value="D">Z - A</option>
             </select>
-            <select onChange={handleOrderPopulation}>
-                <option >Order By Population</option>
+            <select onChange={handleOrder}>
+                <option disabled={populationSelected}>Order By Population</option>
                 <option value="MR">Major to Minor</option>
                 <option value="MJ">Minor to Major</option>
             </select>
             <select onChange={handleOrContinent}>
-                <option value="order">Order By Continent</option>
+                <option disabled={continentSelected}>Filter By Continent</option>
                 <option value="Asia">Asia</option>
                 <option value="Africa">Africa</option>
                 <option value="Americas">Americas</option>
@@ -88,7 +93,7 @@ const Home = () => {
             </select>
 
             <select onChange={(event) => handleOrActivity(event)}>
-                <option value="order">Order By Activities</option>
+                <option disabled={activitySelected}>Filter By Activities</option>
                 <option value="AllActivities">All Countries</option>
                 {
                     activities?.map((activity) => (
@@ -108,26 +113,6 @@ const Home = () => {
             />
         </div>
         
-        {/* <div className='Cards'>
-                {
-                
-                countries && (
-                countries.map((country) => {
-                    // console.log(country);
-                    return (
-                        <Card
-                            key={country.id}
-                            id={country.id}
-                            name={country.name}
-                            continent={country.continent}
-                            population={country.population}
-                            flag={country.flag}
-                            activities={country.activities}
-                        />
-                    )
-                })
-                )}
-        </div> */}
         {rows.map((row, index) => (
             <div className='Cards' key={index}>
             {row.map((country) => (
@@ -143,8 +128,7 @@ const Home = () => {
             ))}
             </div>
         ))}
-        
-        {/* <div className="paginado">
+        <div className="paginado">
             <Paginado
                 key="paginado"
                 countriesPerPage={countriesPerPage}
@@ -152,7 +136,7 @@ const Home = () => {
                 paginado={paginado}
                 currentPage={currentPage}
             />
-        </div> */}
+        </div>
         </>
         )
 }

@@ -3,102 +3,131 @@
 	padding: 46px;
 	border-radius: 10px;
 	margin: 50px auto;
-	background-color: #a9a5a5;
-  }
-  
-  .form-container h1 {
+	background-color: #d8c0bb;
+}
+
+.form-container h1 {
 	margin-top: -10px;
-  }
-  
-  .form-row {
+}
+
+.form-row {
 	display: flex;
 	justify-content: space-between;
-  }
-  
-  .form-column {
+
+}
+
+.form-column {
 	width: 48%;
-  }
-  
-  .form-group {
+}
+
+.form-group {
 	margin-bottom: 15px;
-	/* margin-inline: 5px; */
-  }
-  
-  .form-group label {
+	margin-inline: 5px;
+}
+
+.form-group label {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 5px;
-  }
-  
-  .form-group input,
-  .form-group select {
+}
+
+.form-group input[type="number"]::-webkit-inner-spin-button,
+.form-group input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.form-group input,
+.form-group select {
 	width: 100%;
 	padding-right: 0;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border: 1px solid #f6f6f6;
+	border: 1.5px solid #5c5959;
 	border-radius: 3px;
-	background-color: #f6f6f6;
+	background-color: #F2E0DC;
 	text-align: center;
-  }
-  
-  .btn-submit {
+	color: #6b6b70;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+
+.form-group select option {
+	font-size: 15px;
+}
+
+.form-group input:hover {
+    background-color: #dfbcaed0;
+}
+
+.form-group select:hover {
+	cursor: pointer;
+    background-color: #dfbcaed0;
+}
+
+.btn-submit {
 	width: 100%;
 	padding: 8px 16px;
 	margin-top: 32px;
-	border: 1px solid #000;
 	border-radius: 5px;
 	display: block;
-	color: #fff;
-	background-color: #000;
-  }
-  
-  .btn-submit:hover {
+	
+	background-color: #cb6e90;
+	border-color: #b18897;
+	font-weight: bolder;
+	font-size: 14.5px;
+}
+
+.btn-submit:hover {
+	background-color: #b6587b;
+	border-color: #cb6e90;
 	cursor: pointer;
-  }
-  
-  .msg-error {
-	color: red;
+}
+
+.msg-error {
+	color: #D90452;
 	text-align: left;
 	padding: 5px;
 	border-radius: 5px;
 	margin: 5px;
 	width: 100%;
-  }
-  
-  .selected-countries-container {
+}
+
+.selected-countries-container {
 	margin-top: 20px;
-	background-color: #929092dd;
+	background-color: #d978559a;
 	padding: 10px;
 	border-radius: 3px;
-  }
-  
-  .selected-countries-container h3 {
+}
+
+.selected-countries-container h3 {
 	margin: 0;
-  }
-  
-  .country-container {
+}
+
+.country-container {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	margin: 5px 0;
-  }
-  
-  .country-container span {
-	margin-right: 5px;
-  }
-  
-  .country-container input[type="button"] {
-	background-color: #b04f4f;
+	margin: 15px 0;
+}
+
+.country-container span {
+	margin-left: 120px;
+}
+
+.country-container input[type="button"] {
+	background-color: #c11957;
 	color: #fff;
 	border: none;
 	border-radius: 3px;
 	padding: 5px;
 	cursor: pointer;
-	width: 30px;
-  }
-  
-  .country-container input[type="button"]:hover {
-	background-color: #be3c3c;
-  }
-  
+	width: 37px;
+	margin-right: 117px;
+}
+
+.country-container input[type="button"]:hover {
+	background-color: #94264f;
+}

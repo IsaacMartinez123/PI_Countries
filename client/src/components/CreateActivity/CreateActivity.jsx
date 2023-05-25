@@ -9,6 +9,8 @@ const CreateActivity = () => {
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.countries);
     const navigate = useNavigate();
+    const[countrySelected, setCountrySelected] = useState(false)
+    const[seasonSelected, setSeasonSelected] = useState(false)
 
     const [input, setInput] = useState({
         name: "",
@@ -32,7 +34,12 @@ const CreateActivity = () => {
 
     const handleChange = (event) => {
         event.preventDefault();
-
+        const seasonValue = event.target.value
+        if (seasonValue !== '') {
+            setSeasonSelected(true)
+        }else{
+            setSeasonSelected(false)
+        }
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -49,7 +56,12 @@ const CreateActivity = () => {
         const selectedCountryId = event.target.value;
 
         const findRepeat = input.countryId.includes(selectedCountryId)
-
+        
+        if (selectedCountryId !== '') {
+            setCountrySelected(true)
+        }else{
+            setCountrySelected(false)
+        }
         if (findRepeat) {
             return alert('This country has already been selected')
         }
@@ -100,13 +112,13 @@ const CreateActivity = () => {
                 <div className="form-column">
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
-                        <input onChange={handleChange} value={input.name} type="text" placeholder="Enter the name of the activity" name="name"/>
+                        <input onChange={handleChange} value={input.name} type="text" placeholder="Enter the name" name="name"/>
                         {error.name && <p className="msg-error">{error.name}</p>}
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="difficulty">Difficulty:</label>
-                        <input onChange={handleChange} value={input.difficulty} type="number" min="1" max="5" placeholder="Enter the difficulty of the activity(1 to 5)" name="difficulty"/>
+                        <input onChange={handleChange} value={input.difficulty} type="number" placeholder="Enter the difficulty (1 to 5)" name="difficulty"/>
                         {error.difficulty && <p className="msg-error">{error.difficulty}</p>}
                     </div>
                 </div>
@@ -118,7 +130,7 @@ const CreateActivity = () => {
                             onChange={handleChange}
                             value={input.duration}
                             type="text"
-                            placeholder="Enter the duration of the activity"
+                            placeholder="Enter the duration HH:MM:SS"
                             name="duration"
                         />
                         {error.duration && <p className="msg-error">{error.duration}</p>}
@@ -127,7 +139,7 @@ const CreateActivity = () => {
                     <div className="form-group">
                         <label htmlFor="season">Season:</label>
                         <select name="season" onChange={handleChange}>
-                            <option>Select the season of the activity</option>
+                            <option disabled={seasonSelected}>Select the season</option>
                             <option value="Summer">Summer</option>
                             <option value="Autumn">Autumn</option>
                             <option value="Winter">Winter</option>
@@ -142,7 +154,7 @@ const CreateActivity = () => {
             <div className="form-group">
                 <label htmlFor="countryId">Country:</label>
                 <select name="countryId" onChange={handleSelectChange}>
-                    <option>Select the country/s</option>
+                    <option disabled={countrySelected}>Select the country/s</option>
                     {countries &&
                     countries.map((country) => (
                         <option value={country.id} key={country.id}>

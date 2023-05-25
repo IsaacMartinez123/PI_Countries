@@ -4,10 +4,38 @@ const initialState = {
     countries: [],
     allCountries: [],
     countryDetail: [],
-    activities: []
+    activities: [],
+    order: null,
+    continentFilter: null,
+    activityFilter: null,
+};
+
+const applyFiltersAndOrder = (countries, order, continentFilter, activityFilter) => {
+    let filteredCountries = [...countries];
+
+    if (continentFilter && continentFilter !== 'AllCountries') {
+        filteredCountries = filteredCountries.filter(country => country.continent === continentFilter);
+    }
+
+    if (activityFilter && activityFilter !== 'AllActivities') {
+        filteredCountries = filteredCountries.filter(country => country.activities.some(activity => activity.name === activityFilter));
+    }
+
+    if (order === 'A') {
+        filteredCountries.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (order === 'D') {
+        filteredCountries.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (order === 'MJ') {
+        filteredCountries.sort((a, b) => a.population - b.population);
+    } else if (order === 'MR') {
+        filteredCountries.sort((a, b) => b.population - a.population);
+    }
+
+    return filteredCountries;
 };
 
 const reducer = (state = initialState, { type, payload }) => {
+
     switch (type) {
         case GET_COUNTRY:
             return {
@@ -17,9 +45,10 @@ const reducer = (state = initialState, { type, payload }) => {
             };
 
         case ADD_COUNTRY:
+            const copy = [...state.allCountries];
             return {
                 ...state,
-                countries: payload
+                countries: payload === '' ? copy : payload
             };
 
         case FIND_COUNTRY:
@@ -27,73 +56,56 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 countryDetail: payload
             };
-            
-        case RESET_DETAIL: 
-            return{
+
+        case RESET_DETAIL:
+            return {
                 ...state,
                 countryDetail: []
-            }
+            };
 
         case ORDER_COUNTRY:
-            const countriesCopy = [...state.countries]
-            if (payload === 'A') {
-                countriesCopy.sort((a, b) => a.name.localeCompare(b.name))
-            }else if(payload === 'D'){
-                countriesCopy.sort((a, b) => b.name.localeCompare(a.name))
-            }
-            return{
+            return {
                 ...state,
-                countries: countriesCopy
-            }
-        
+                order: payload,
+                countries: applyFiltersAndOrder(state.allCountries, payload, state.continentFilter, state.activityFilter),
+            };
+
         case ORDER_POPULATION:
-            const countriesCopyByPopulation = [...state.countries]
-            if (payload === 'MJ') {
-                countriesCopyByPopulation.sort((a, b) => a.population - b.population)
-            }else if(payload === 'MR'){
-                countriesCopyByPopulation.sort((a, b) => b.population - a.population)
-            }
-            return{
+            return {
                 ...state,
-                countries: countriesCopyByPopulation
-            }
+                order: payload,
+                countries: applyFiltersAndOrder(state.allCountries, payload, state.continentFilter, state.activityFilter),
+            };
 
         case FILTER_CONTINENT:
-            const filterContinent = state.allCountries.filter(country => country.continent === payload )
-            return{
+            return {
                 ...state,
-                countries: payload === 'AllCountries' || payload === 'order'
-                ? [...state.allCountries]
-                : filterContinent
-            }
+                continentFilter: payload,
+                countries: applyFiltersAndOrder(state.allCountries, state.order, payload, state.activityFilter),
+            };
 
         case ADD_ACTIVITY:
-            return{
+            return {
                 ...state
-            }
+            };
 
         case GET_ACTIVITY:
-            return{
+            return {
                 ...state,
                 activities: payload
-            }
+            };
 
         case FILTER_ACTIVITY:
-            const filterActivity = state.allCountries.filter((country) => {
-                return country.activities.some((activity) => activity.name === payload);
-            });
-
-            return{
+            return {
                 ...state,
-                countries: payload === 'AllActivities' || payload === 'order'
-                ? [...state.allCountries]
-                : filterActivity
-            }
+                activityFilter: payload,
+                countries: applyFiltersAndOrder(state.allCountries, state.order, state.continentFilter, payload),
+            };
 
         default:
-        return state;
+            return state;
     }
 };
 
-
 export default reducer;
+

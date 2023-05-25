@@ -47,7 +47,7 @@ const Detail = () => {
                         ))}
                     </>
                     ) : (
-                    <h2 className="activityEmpty">No activities available</h2>
+                    <h2 className="activityEmpty">There are currently no activities for this country</h2>
                     )}
                 </div>
                 <NavLink to={`/home`} className="button-container">

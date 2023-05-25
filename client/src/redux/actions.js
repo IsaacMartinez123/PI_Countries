@@ -63,16 +63,16 @@ export const findCountryById = (id) => {
     };
 };
 
-export const orderPopulation = (orderPopulation) => {
-    try {
-        return{
-            type: ORDER_POPULATION,
-            payload: orderPopulation,
-        }
-    } catch (error) {
-        alert(error.message);
-    }
-}
+// export const orderPopulation = (orderPopulation) => {
+//     try {
+//         return{
+//             type: ORDER_POPULATION,
+//             payload: orderPopulation,
+//         }
+//     } catch (error) {
+//         alert(error.message);
+//     }
+// }
 
 export const orderCountry = (order) => {
     try {
@@ -90,6 +90,16 @@ export const filterContinent = (continent) => {
         return{
             type: FILTER_CONTINENT,
             payload: continent,
+        }
+    } catch (error) {
+        alert(error.message);
+    }
+}
+export const filterActivity = (activity) => {
+    try {
+        return{
+            type: FILTER_ACTIVITY,
+            payload: activity,
         }
     } catch (error) {
         alert(error.message);
@@ -131,16 +141,6 @@ export const getActivities = () => {
     }
 }
 
-export const filterActivity = (activity) => {
-    try {
-        return{
-            type: FILTER_ACTIVITY,
-            payload: activity,
-        }
-    } catch (error) {
-        alert(error.message);
-    }
-}
 
 export const resetDetail = () => {
     try {

@@ -4,7 +4,7 @@
     justify-content: center;
     margin: 0 auto;
     padding: 7px;
-    background-color: #591E34
+    background-color: #6f2641
 }
 
 .li {
@@ -14,6 +14,7 @@
 .container {
     margin: 0.6rem;
     margin-top: 0.5rem;
+    font-size: 0.85rem;
     color: #193140;
     text-decoration: none;
     background-color: #f2e0dce7;
@@ -25,6 +26,7 @@
 .container:hover {
     background-color: #da5989e3;
     transform: scale(1.1);
+    cursor: pointer
 }
 
 .current {
