@@ -18,14 +18,19 @@ const Navbar = ({ setCurrentPage, isHome }) => {
             {isHome === '/home' && <SearchBar setCurrentPage={setCurrentPage}/>}
         </div>
         <div className='nav-buttons'>
-            {isHome === '/create' &&
+            {isHome !== '/home' &&
                 <NavLink to={'/home'}>
                 <button className='btn-home'>Home</button>
                 </NavLink>
             }
-            {isHome === '/home' &&
+            {isHome !== '/create' &&
                 <NavLink to={'/create'}>
                 <button className='btn-create'>Create Activity</button>
+                </NavLink>
+            }
+            {isHome !== '/activities' &&
+                <NavLink to={'/activities'}>
+                    <button className='btn-activity'>Activities List</button>
                 </NavLink>
             }
             <button className='btn-reset' onClick={getAllCountries}>Reset</button>

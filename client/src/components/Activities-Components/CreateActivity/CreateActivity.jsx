@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postActivity, getActivities } from "../../redux/actions";
+import { postActivity, getActivities } from "../../../redux/actions";
 import "./Create.css";
 import validate from "./validate";
 
@@ -91,6 +91,10 @@ const CreateActivity = () => {
             return alert("You must complete all the fields to create an activity");
         }
 
+        if (error.name || error.difficulty || error.duration || error.season || error.countryId) {
+            return alert('Verify that all validations are met')
+        }
+
         dispatch(postActivity(input));
         alert("Activity created successfully!");
         setInput({
@@ -112,13 +116,13 @@ const CreateActivity = () => {
                 <div className="form-column">
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
-                        <input onChange={handleChange} value={input.name} type="text" placeholder="Enter the name" name="name"/>
+                        <input onChange={handleChange} value={input.name} type="text" placeholder="Enter the name" name="name" autoComplete="off"/>
                         {error.name && <p className="msg-error">{error.name}</p>}
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="difficulty">Difficulty:</label>
-                        <input onChange={handleChange} value={input.difficulty} type="number" placeholder="Enter the difficulty (1 to 5)" name="difficulty"/>
+                        <input onChange={handleChange} value={input.difficulty} type="text" placeholder="Enter the difficulty (1 to 5)" name="difficulty" autoComplete="off"/>
                         {error.difficulty && <p className="msg-error">{error.difficulty}</p>}
                     </div>
                 </div>
@@ -126,13 +130,7 @@ const CreateActivity = () => {
                 <div className="form-column">
                     <div className="form-group">
                         <label htmlFor="duration">Duration:</label>
-                        <input
-                            onChange={handleChange}
-                            value={input.duration}
-                            type="text"
-                            placeholder="Enter the duration HH:MM:SS"
-                            name="duration"
-                        />
+                        <input onChange={handleChange} value={input.duration} type="text" placeholder="Enter the duration HH:MM:SS" name="duration" autoComplete="off"/>
                         {error.duration && <p className="msg-error">{error.duration}</p>}
                     </div>
 

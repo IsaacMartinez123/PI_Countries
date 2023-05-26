@@ -1,0 +1,41 @@
+.header {
+    background-color: #1f9caa;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 0 25%;
+    margin-top: 5%;
+    text-align: center;
+    color: #2e3438;
+}
+
+.table-container {
+    background-color: #F2E0DC;
+    width: 50%;
+    margin:auto;
+    margin-top: 2%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table-head th {
+    background-color: #F27999;
+    height: 40px;
+    font-size: 1.09rem;
+    border-bottom: 1px solid #000000;
+    color: #1b1a1a;
+}
+
+.table-body td {
+    color: #193140;
+    height: 30px;
+    padding: 5px;
+    border: 0.5px solid #F2E0DC;
+}
+
+/*Pseudo-clases*/
+
+.table-body:hover {
+    background-color: #ecb1c1d4;
+    cursor: pointer
+}
+

@@ -63,17 +63,6 @@ export const findCountryById = (id) => {
     };
 };
 
-// export const orderPopulation = (orderPopulation) => {
-//     try {
-//         return{
-//             type: ORDER_POPULATION,
-//             payload: orderPopulation,
-//         }
-//     } catch (error) {
-//         alert(error.message);
-//     }
-// }
-
 export const orderCountry = (order) => {
     try {
         return{

@@ -42,25 +42,10 @@
   background-color: #e3c3bb;
 }
 
-.btn-home{
-  background-color: #cb6e90;
-  border-color: #b18897;
-  font-weight: bolder;
-  font-size: 14.5px;
-  height: 38px;
-  border-radius: 8px;
-  margin-left: 10px;
-  margin-top: -1px;
-}
-.btn-create{
-  background-color: #cb6e90;
-  border-color: #b18897;
-  height: 38px;
-  border-radius: 8px;
-  margin-left: 10px;
-  font-weight: bolder;
-  font-size: 14.5px;
-}
+
+.btn-activity,
+.btn-create,
+.btn-home,
 .btn-reset {
   background-color: #cb6e90;
   border-color: #b18897;
@@ -72,11 +57,7 @@
   font-size: 14.5px;
 }
 
-.btn-agregar svg {
-  fill: #000000;
-}
-
-.btn-agregar:hover,
+.btn-activity:hover,
 .btn-create:hover,
 .btn-home:hover,
 .btn-reset:hover {

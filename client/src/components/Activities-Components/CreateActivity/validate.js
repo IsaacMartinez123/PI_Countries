@@ -6,28 +6,28 @@ const validate = (form) => {
         errors.name = "The name cannot be empty";
     }
     
-    if (form.name.length < 4) {
-        errors.name = "The name must have a minimum of 4 characters"
+    if (form.name.length < 4 || form.name.length > 35) {
+        errors.name = "The name must have between 4 and 35 characters"
     }
 
-    if (form.name.length > 35) {
-        errors.name = "The name must have a maximum of 35 characters"
+    if (!/^[A-Z]+$/i.test(form.name)) {
+        errors.name = "The name must only have letters"
     }
 
-    // if (form.difficulty.length) { //Valida stado de los campos
-    //     errors.difficulty = "The difficulty cannot be empty";
-    // }
-
-    if (form.difficulty > 5 ) { //Valida stado de los campos
-        errors.difficulty = "Difficulty cannot be higher than 5";
+    if (form.difficulty > 5 || form.difficulty < 1) { //Valida stado de los campos
+        errors.difficulty = "Difficulty cannot be less than 1 or more than 5";
     }
-    
-    if (form.difficulty < 1 ) { //Valida stado de los campos
-        errors.difficulty = "Difficulty cannot be less than 1";
+
+    if (!/^[0-9]+$/.test(form.difficulty)) {
+        errors.difficulty = "Difficulty must only have numbers"
     }
 
     if (!form.duration) { //Valida stado de los campos
         errors.duration = "The duration cannot be empty";
+    }
+
+    if (!/^(?:2[0-3]|[01]?[0-9]):[0-5][0-9]:[0-5][0-9]$/.test(form.duration)) {
+        errors.duration = `The duration must be in the format: "HH:MM:SS"`
     }
 
     if (!form.season) { //Valida stado de los campos

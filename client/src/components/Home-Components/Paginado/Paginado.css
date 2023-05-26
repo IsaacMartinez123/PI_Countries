@@ -23,8 +23,23 @@
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
+.button-next,
+.button-prev{
+    color: #424243;
+    text-decoration: none;
+    background-color: #f2e0dce7;
+    margin-top: 9.5px;
+    margin: 10px;
+    height: 31px;
+    width: 40px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.button-next:hover,
+.button-prev:hover,
 .container:hover {
-    background-color: #da5989e3;
+    background-color: #db6490e3;
     transform: scale(1.1);
     cursor: pointer
 }

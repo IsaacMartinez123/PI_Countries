@@ -4,23 +4,19 @@ import LandingPage from './components/Landing/LandingPage.jsx'
 import Home from './components/Home-Components/Home/Home';
 import Navbar from './components/Home-Components/Nav/Navbar';
 import { useSelector } from 'react-redux'
-// import { getCountry } from './redux/actions';
 import { useState } from 'react';
 import Detail from './components/Detail/Detail';
-import CreateActivity from './components/CreateActivity/CreateActivity';
+import CreateActivity from './components/Activities-Components/CreateActivity/CreateActivity';
+import Activities from './components/Activities-Components/ActivitiesList/Activities';
 
 function App() {
 
-  const location = useLocation();
-  const isHome = location.pathname;
-  const countries = useSelector(state => state.countries);
-  // const dispatch = useDispatch();
+    const location = useLocation();
+    const isHome = location.pathname;
+    const countries = useSelector(state => state.countries);
 
-  // useEffect(() => {
-  //   dispatch(getCountry());
-  // }, [dispatch]);
-
-  const [currentPage, setCurrentPage] = useState(1)
+    //paginado
+    const [currentPage, setCurrentPage] = useState(1)
     const [countriesPerPage] = useState(10)
     const lastCountry = currentPage * countriesPerPage;
     const firstCountry = lastCountry - countriesPerPage;
@@ -41,13 +37,16 @@ function App() {
 
   return (
     <div className="App">
+      
       {isHome === '/home'  &&  <Navbar isHome={isHome} setCurrentPage={setCurrentPage}/>}
       {isHome === '/create'  &&  <Navbar isHome={isHome} setCurrentPage={setCurrentPage}/>}
+      {isHome === '/activities'  &&  <Navbar isHome={isHome} setCurrentPage={setCurrentPage}/>}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home rows={rows} paginado={paginado} currentPage={currentPage} countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage}/>} />
         <Route path="/detail/:id" element={<Detail/>} />
         <Route path='/create' element={<CreateActivity/>}/>
+        <Route path='/activities' element={<Activities/>}/>
       </Routes>
     </div>
   );
