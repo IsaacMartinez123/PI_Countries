@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getCountry } from '../../../redux/actions';
 import './Nav.css';
 
-const Navbar = ({ setCurrentPage, isHome }) => {
+const Navbar = ({ isHome, setCurrentPage}) => {
     const dispatch = useDispatch();
 
     const getAllCountries = (event) => {

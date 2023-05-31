@@ -7,7 +7,7 @@ import validate from "./validate";
 
 const CreateActivity = () => {
     const dispatch = useDispatch();
-    const countries = useSelector((state) => state.countries);
+    const countries = useSelector((state) => state.allCountries);
     const navigate = useNavigate();
     const[countrySelected, setCountrySelected] = useState(false)
     const[seasonSelected, setSeasonSelected] = useState(false)

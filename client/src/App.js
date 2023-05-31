@@ -39,10 +39,10 @@ function App() {
     <div className="App">
       
       {isHome === '/home'  &&  <Navbar isHome={isHome} setCurrentPage={setCurrentPage}/>}
-      {isHome === '/create'  &&  <Navbar isHome={isHome} setCurrentPage={setCurrentPage}/>}
-      {isHome === '/activities'  &&  <Navbar isHome={isHome} setCurrentPage={setCurrentPage}/>}
+      {isHome === '/create'  &&  <Navbar isHome={isHome}/>}
+      {isHome === '/activities'  &&  <Navbar isHome={isHome}/>}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage/>} />
         <Route path="/home" element={<Home rows={rows} paginado={paginado} currentPage={currentPage} countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage}/>} />
         <Route path="/detail/:id" element={<Detail/>} />
         <Route path='/create' element={<CreateActivity/>}/>

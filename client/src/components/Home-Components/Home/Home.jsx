@@ -28,7 +28,7 @@ const Home = ({ paginado, currentPage, countriesPerPage, rows, setCurrentPage })
             setOrderSelected(false);
         }
         dispatch(orderCountry(selectedValue));
-        setCurrentPage(1);
+        setCurrentPage(1)
     };
     //Filtros
     const handleOrContinent = (event) => {
@@ -39,7 +39,7 @@ const Home = ({ paginado, currentPage, countriesPerPage, rows, setCurrentPage })
             setContinentSelected(false);
         }
         dispatch(filterContinent(selectedValue));
-        setCurrentPage(1);
+        setCurrentPage(1)
     };
 
     const handleOrActivity = (event) => {
@@ -50,7 +50,7 @@ const Home = ({ paginado, currentPage, countriesPerPage, rows, setCurrentPage })
             setActivitySelected(false);
         }
         dispatch(filterActivity(selectedValue));
-        setCurrentPage(1);
+        setCurrentPage(1)
     };
 
     return (

@@ -64,34 +64,23 @@ export const findCountryById = (id) => {
 };
 
 export const orderCountry = (order) => {
-    try {
-        return{
-            type: ORDER_COUNTRY,
-            payload: order,
-        }
-    } catch (error) {
-        alert(error.message);
+    return{
+        type: ORDER_COUNTRY,
+        payload: order,
     }
 }
 
 export const filterContinent = (continent) => {
-    try {
-        return{
-            type: FILTER_CONTINENT,
-            payload: continent,
-        }
-    } catch (error) {
-        alert(error.message);
+    return{
+        type: FILTER_CONTINENT,
+        payload: continent,
     }
 }
 export const filterActivity = (activity) => {
-    try {
-        return{
-            type: FILTER_ACTIVITY,
-            payload: activity,
-        }
-    } catch (error) {
-        alert(error.message);
+    
+    return{
+        type: FILTER_ACTIVITY,
+        payload: activity,
     }
 }
 

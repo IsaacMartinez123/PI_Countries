@@ -45,10 +45,9 @@ const reducer = (state = initialState, { type, payload }) => {
             };
 
         case ADD_COUNTRY:
-            const copy = [...state.allCountries];
             return {
                 ...state,
-                countries: payload === '' ? copy : payload
+                countries: payload === '' ? [...state.allCountries] : payload
             };
 
         case FIND_COUNTRY:
