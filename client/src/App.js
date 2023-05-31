@@ -8,6 +8,10 @@ import { useState } from 'react';
 import Detail from './components/Detail/Detail';
 import CreateActivity from './components/Activities-Components/CreateActivity/CreateActivity';
 import Activities from './components/Activities-Components/ActivitiesList/Activities';
+import axios from 'axios';
+
+// axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://picountries-production.up.railway.app';
 
 function App() {
 

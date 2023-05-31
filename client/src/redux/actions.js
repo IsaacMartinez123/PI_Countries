@@ -2,7 +2,7 @@ import { ADD_COUNTRY, FIND_COUNTRY, ORDER_COUNTRY, ORDER_POPULATION, FILTER_CONT
 import axios from 'axios';
 
 export const addCountry = (name) => {
-    const endpoint = 'http://localhost:3001/countries';
+    const endpoint = '/countries';
     
     return async (dispatch) => {
         try {
@@ -22,7 +22,7 @@ export const addCountry = (name) => {
 };
 
 export const getCountry = () => {
-    const endpoint = 'http://localhost:3001/countries';
+    const endpoint = '/countries';
 
     return async (dispatch) => {
         try {
@@ -43,7 +43,7 @@ export const getCountry = () => {
 };
 
 export const findCountryById = (id) => {
-    const endpoint = 'http://localhost:3001/countries';
+    const endpoint = '/countries';
     
     return async (dispatch) => {
         try {
@@ -86,7 +86,7 @@ export const filterActivity = (activity) => {
 
 export const postActivity = (activity) => {
 
-    const endpoint = 'http://localhost:3001/activities';
+    const endpoint = '/activities';
 
     return async (dispatch) => {
         try {
@@ -103,7 +103,7 @@ export const postActivity = (activity) => {
 
 export const getActivities = () => {
 
-    const endpoint = 'http://localhost:3001/activities';
+    const endpoint = '/activities';
 
     return async (dispatch) => {
         try {
