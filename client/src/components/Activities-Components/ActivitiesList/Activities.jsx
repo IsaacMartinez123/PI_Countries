@@ -30,8 +30,8 @@ const Activities = () => {
             {activities?.map(activity => (
                 <tr className='table-body'>
                     <td>{activity.name}</td>
-                    <td>{activity.difficulty}</td>
                     <td>{activity.duration}</td>
+                    <td>{activity.difficulty}</td>
                     <td>{activity.season}</td>
                 </tr>
             ))}
